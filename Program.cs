@@ -6,7 +6,6 @@ internal class Program
         Console.WriteLine("********ULAZ********");
         Console.WriteLine("Unesite broj elemenata niza N");
         int N = int.Parse(Console.ReadLine());
-        Console.WriteLine("Broj nije u opsegu");
         if (N >= 5 && N < 50) {
             Console.WriteLine("Unesite elemente niza");
             int[] a = new int[N];
