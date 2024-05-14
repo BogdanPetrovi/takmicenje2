@@ -3,10 +3,10 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int[] a, b, c, d;
+        int[] a, b, c, d, g;
         int[,] f;
         int x, y, z, prethodnaVrednost, srednjaVrednost, indeksNajblize, najblizaRazlika;
-        string broj, palindrom;
+        string palindrom;
         bool isTrue;
 
         Console.WriteLine("********ULAZ********");
@@ -91,16 +91,19 @@ internal class Program
                             }
                         }
                     }
+                    g = new int[N-1];
                     for (int i = indeksNajblize + 1; i < c.Length; i++)
                     {
                         c[i - 1] = c[i];
                     }
-                    c[c.Length - 1] = 0;
-
-                    Console.WriteLine("\n******** odgovor 2 ********");
-                    for (int i = 0; i < c.Length; i++)
+                    for(int i = 0; i<g.Length; i++)
                     {
-                        Console.Write(c[i] + " ");
+                        g[i] = c[i];
+                    }
+                    Console.WriteLine("\n******** odgovor 2 ********");
+                    for (int i = 0; i < g.Length; i++)
+                    {
+                        Console.Write(g[i] + " ");
                     }
                     Console.Write("\n\n");
 
@@ -115,16 +118,15 @@ internal class Program
                         }
                         else
                         {
-                            broj = Math.Abs(a[i]).ToString();
-                            d[i] = int.Parse(broj[broj.Length - 1].ToString());
+                            d[i] = a[i] % 10;
                         }
                         palindrom = palindrom + d[i].ToString();
                     }
 
                     isTrue = true;
-                    for (int i = 0; i < palindrom.Length; i++)
+                    for (int i = 0; i < palindrom.Length / 2 - 1; i++)
                     {
-                        for (int j = palindrom.Length - 1; j <= 0; i++)
+                        for (int j = palindrom.Length - 1; j > palindrom.Length / 2 - 1; i--)
                         {
                             if (palindrom[i] != palindrom[j])
                             {
@@ -134,7 +136,7 @@ internal class Program
                     }
                     if(isTrue)
                     {
-                        //Console.WriteLine("broj je palindrom" + isTrue + " " + palindrom + " " + palindrom.Length);
+                        Console.WriteLine("broj je palindrom" + isTrue + " " + palindrom + " " + palindrom.Length);
                     }
                     else
                     {
@@ -144,16 +146,17 @@ internal class Program
 
 
                     //1.4
-                    f = new int[N, N+1];
-                    for(int i = 1 ; i<N ; i++)
-                    {
-                        for(int j = 1 ; j <= N; j++)
-                        {
-                            f[i, j] = a[i];   
-                            Console.Write(f[i, j] + "\t");
-                        }
-                        Console.WriteLine();
-                    }
+                    // f = new int[N, N+1];
+                    // for(int i = 0 ; i<N ; i++)
+                    // {
+                    //     for(int j = 0 ; j <= N; j++)
+                    //     {
+                    //         a[j] = a[j] * j;
+                    //         f[i,j] = a[j];
+                    //         Console.Write(f[i, j] + "\t");  
+                    //     }
+                    //     Console.WriteLine();
+                    // }
 
                 }
                 else { Console.WriteLine("Broj nije u opsegu"); }
